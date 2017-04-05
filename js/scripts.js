@@ -1,6 +1,5 @@
 (function(){
-
-
+//Business -logic
   const WINNINGCOMBINATIONS = [
     [1,2,3],
     [4,5,6],
@@ -44,9 +43,6 @@
     }
   }
 
-    // include the array of positions that the player has accumulated
-
-
   class Players {
     constructor(token) {
       this.player1 = (token);
@@ -57,8 +53,6 @@
     }
   }
 
-
-
   class Square {
     constructor(playerValue,positionValue){
       this.player = playerValue;
@@ -66,13 +60,22 @@
     }
   }
 
-  //
-
-
   // squareMethod(player,square){
   //   let square = new Square(player);
-  //   return square = new Board()
-  //
+  //   return square = new Board();
   // }
+
+//UI
+  $(document).ready(function(){
+   var
+    });
+
+  });
+
+
+
+
+
+
 
 })();
