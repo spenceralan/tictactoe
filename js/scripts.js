@@ -1,5 +1,6 @@
 (function(){
 
+
   const WINNINGCOMBINATIONS = [
     [1,2,3],
     [4,5,6],
@@ -10,11 +11,22 @@
     [1,5,9],
     [3,5,7]];
 
-
   class Game {
-    isWon(){
-      //return true or false
-      //game.isWon(board) = player1 or player2 || false
+    isWon(playerPositions){
+      let didTheyWin;
+      for(let c=0; c < WINNINGCOMBINATIONS.length; c++){
+        let winningArray= [];
+        for(let n=0; n < WINNINGCOMBINATIONS[c].length; n++){
+          let number = (WINNINGCOMBINATIONS[c])[n];
+          if(playerPositions.includes(number)){
+            winningArray.push(number);
+          }
+          if(winningArray.toString() === (WINNINGCOMBINATIONS[c]).toString()){
+            didTheyWin = true;
+          }
+        }
+      }
+      return !!didTheyWin;
     }
   }
 
@@ -62,11 +74,5 @@
   //   return square = new Board()
   //
   // }
-
-
-  let square = new Square("X", 2);
-  let board = new Board;
-  board.assignValues(square);
-  alert(board.playerXBoard);
 
 })();
