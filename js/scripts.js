@@ -19,16 +19,27 @@
   }
 
   class Board {
-    constructor() {}
-    // include the array of positions that the player has accumulated
+    constructor() {
+      this.playerXBoard = [];
+      this.playerOBoard = [];
+    }
+    assignValues(square){
+      if(square.player === "X" ){
+        this.playerXBoard.push(square.position);
+      } else {
+        this.playerOBoard.push(square.position);
+      }
+    }
   }
+
+    // include the array of positions that the player has accumulated
+
 
   class Players {
     constructor(token) {
-      this.player1=(token);
+      this.player1 = (token);
       this.player2 = this.otherToken(token);
     }
-
     otherToken(token){
       return token === "X" ? "O" : "X"; // X or O
     }
@@ -37,15 +48,25 @@
 
 
   class Square {
-    constructor(playerToken){
-      this.value = playerToken;
+    constructor(playerValue,positionValue){
+      this.player = playerValue;
+      this.position = positionValue;
     }
   }
 
   //
-  // let square1 = new Square(player1);
-  // let players = new Players(token);
-  // players.player1;
-  // players.player2;
+
+
+  // squareMethod(player,square){
+  //   let square = new Square(player);
+  //   return square = new Board()
+  //
+  // }
+
+
+  let square = new Square("X", 2);
+  let board = new Board;
+  board.assignValues(square);
+  alert(board.playerXBoard);
 
 })();
