@@ -1,6 +1,7 @@
 (function(){
 //Business -logic
-  const WINNINGCOMBINATIONS = [
+  const WINNINGCOMBINATIONS =
+  [
     [1,2,3],
     [4,5,6],
     [7,8,9],
@@ -8,25 +9,18 @@
     [2,5,8],
     [3,6,9],
     [1,5,9],
-    [3,5,7]];
+    [3,5,7],
+  ];
 
-  class Game {
-    isWon(playerPositions){
-      let didTheyWin;
-      for(let c=0; c < WINNINGCOMBINATIONS.length; c++){
-        let winningArray= [];
-        for(let n=0; n < WINNINGCOMBINATIONS[c].length; n++){
-          let number = (WINNINGCOMBINATIONS[c])[n];
-          if(playerPositions.includes(number)){
-            winningArray.push(number);
-          }
-          if(winningArray.toString() === (WINNINGCOMBINATIONS[c]).toString()){
-            didTheyWin = true;
-          }
-        }
-      }
-      return !!didTheyWin;
-    }
+
+  const Game = function() {}
+
+  Game.prototype.isWon = function(playerPositions) {
+    return WINNINGCOMBINATIONS.some(function(combination){
+      return combination.every(function(number){
+        return playerPositions.includes(number);
+      });
+    });
   }
 
   class Board {
@@ -65,11 +59,8 @@
   //   return square = new Board();
   // }
 
-//UI
+// UI
   $(document).ready(function(){
-   var
-    });
-
   });
 
 
