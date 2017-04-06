@@ -75,65 +75,69 @@
       board = new Board;
     }
 
-    // $(".gameSquare").click(function(){
-    //   let player = $(this).html();
-    //   let position = $(this).attr("id");
-    //
-    //   if (player === "x" || player === "o") {
-    //     $("#gameResultsDisplay").text("that square is occupied!");
-    //   } else {
-    //     usedSquares % 2 === 0 ? $(this).text("x") : $(this).text("o");
-    //     player = $(this).html();
-    //     usedSquares++;
-    //   }
-    //
-    //   square = new Square(player, Number(position));
-    //   board.assignValues(square);
-    //   if (game.isWon(board.playerXBoard)) {
-    //     $("#gameResultsDisplay").text("player x won!");
-    //     board = new Board;
-    //   };
-    //   if (game.isWon(board.playerOBoard)) {
-    //     $("#gameResultsDisplay").text("player o won!");
-    //     board = new Board;
-    //   };
-    //
-    // });
+// two players
 
     $(".gameSquare").click(function(){
-      let player1 = "x";
-      let player2 = "o";
+      let player = $(this).html();
       let position = $(this).attr("id");
 
-      if ($(this).html() === "x" || $(this).html() === "o") {
+      if (player === "x" || player === "o") {
         $("#gameResultsDisplay").text("that square is occupied!");
       } else {
-        $("#gameResultsDisplay").empty();
-        $(this).text("x")
+        usedSquares % 2 === 0 ? $(this).text("x") : $(this).text("o");
+        player = $(this).html();
+        usedSquares++;
       }
 
-      let square1 = new Square(player1, Number(position));
-      board.assignValues(square1);
-
-      if (board.usedPositions.length < 9) {
-        emptySquare = board.randomEmptyPosition();
-        $(`#${emptySquare}`).text("o");
-        let square2 = new Square(player2, emptySquare);
-        board.assignValues(square2);
-      }
-
+      square = new Square(player, Number(position));
+      board.assignValues(square);
       if (game.isWon(board.playerXBoard)) {
         $("#gameResultsDisplay").text("player x won!");
-        $(".gameDisplay").hide();
         board = new Board;
       };
       if (game.isWon(board.playerOBoard)) {
         $("#gameResultsDisplay").text("player o won!");
-        $(".gameDisplay").hide();
         board = new Board;
       };
 
     });
+
+// one player against a really stupid computer
+
+    // $(".gameSquare").click(function(){
+    //   let player1 = "x";
+    //   let player2 = "o";
+    //   let position = $(this).attr("id");
+    //
+    //   if ($(this).html() === "x" || $(this).html() === "o") {
+    //     $("#gameResultsDisplay").text("that square is occupied!");
+    //   } else {
+    //     $("#gameResultsDisplay").empty();
+    //     $(this).text("x")
+    //   }
+    //
+    //   let square1 = new Square(player1, Number(position));
+    //   board.assignValues(square1);
+    //
+    //   if (board.usedPositions.length < 9) {
+    //     emptySquare = board.randomEmptyPosition();
+    //     $(`#${emptySquare}`).text("o");
+    //     let square2 = new Square(player2, emptySquare);
+    //     board.assignValues(square2);
+    //   }
+    //
+    //   if (game.isWon(board.playerXBoard)) {
+    //     $("#gameResultsDisplay").text("player x won!");
+    //     $(".gameDisplay").hide();
+    //     board = new Board;
+    //   };
+    //   if (game.isWon(board.playerOBoard)) {
+    //     $("#gameResultsDisplay").text("player o won!");
+    //     $(".gameDisplay").hide();
+    //     board = new Board;
+    //   };
+    //
+    // });
 
 
 
