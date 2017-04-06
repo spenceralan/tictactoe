@@ -13,6 +13,10 @@
   ];
 
 
+  const numberGenerator = function() {
+    return Math.ceil(Math.random() * 9);
+  }
+
   const Game = function() {}
 
   Game.prototype.isWon = function(playerPositions) {
@@ -25,25 +29,17 @@
 
   class Board {
     constructor() {
+      this.usedPositions = [];
       this.playerXBoard = [];
       this.playerOBoard = [];
     }
     assignValues(square){
-      if(square.player === "X" ){
+      this.usedPositions.push(square.position);
+      if(square.player === "x" ){
         this.playerXBoard.push(square.position);
       } else {
         this.playerOBoard.push(square.position);
       }
-    }
-  }
-
-  class Players {
-    constructor(token) {
-      this.player1 = (token);
-      this.player2 = this.otherToken(token);
-    }
-    otherToken(token){
-      return token === "X" ? "O" : "X"; // X or O
     }
   }
 
@@ -54,28 +50,48 @@
     }
   }
 
-  // squareMethod(player,square){
-  //   let square = new Square(player);
-  //   return square = new Board();
-  // }
+  const resetGame = function(){
+    $(".gameSquare").each(function(){
+      $(this).html("");
+    });
+    $("#gameResultsDisplay").text("");
+    board = new Board;
+  }
 
 // UI
   $(document).ready(function(){
 
     let usedSquares = 0;
+    const game = new Game;
+    let board = new Board;
 
     $(".gameSquare").click(function(){
-      let player = $(this).html();
+      let player = "";
       let position = $(this).attr("id");
 
       if (player === "x" || player === "o") {
         alert("that square is in use");
       } else {
         usedSquares % 2 === 0 ? $(this).text("x") : $(this).text("o");
+        player = $(this).html();
         usedSquares++;
       }
 
+      square = new Square(player, Number(position));
+      board.assignValues(square);
+      if (game.isWon(board.playerXBoard)) {
+        $("#gameResultsDisplay").text("player x won!");
+        board = new Board;
+      };
+      if (game.isWon(board.playerOBoard)) {
+        $("#gameResultsDisplay").text("player o won!");
+      };
+
     });
+
+    $("#resetButton").click(function(){
+      resetGame();
+    })
 
 
 
