@@ -61,6 +61,24 @@
 
 // UI
   $(document).ready(function(){
+
+    let usedSquares = 0;
+
+    $(".gameSquare").click(function(){
+      let player = $(this).html();
+      let position = $(this).attr("id");
+
+      if (player === "x" || player === "o") {
+        alert("that square is in use");
+      } else {
+        usedSquares % 2 === 0 ? $(this).text("x") : $(this).text("o");
+        usedSquares++;
+      }
+
+    });
+
+
+
   });
 
 
