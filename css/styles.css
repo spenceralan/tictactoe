@@ -1,7 +1,19 @@
 .col-xs-4 {
-  border: 2px solid #FFACE4;
+  border: 1px solid black;
   height: 200px;
   width: 200px;
   text-align: center;
   font-size: 125px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .col-xs-4 {
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    font-size: 60px;
+  }
+
 }
