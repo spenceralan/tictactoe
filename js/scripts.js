@@ -66,11 +66,11 @@
     let board = new Board;
 
     $(".gameSquare").click(function(){
-      let player = "";
+      let player = $(this).html();
       let position = $(this).attr("id");
 
       if (player === "x" || player === "o") {
-        alert("that square is in use");
+        $("#gameResultsDisplay").text("that square is occupied!");
       } else {
         usedSquares % 2 === 0 ? $(this).text("x") : $(this).text("o");
         player = $(this).html();
@@ -85,6 +85,7 @@
       };
       if (game.isWon(board.playerOBoard)) {
         $("#gameResultsDisplay").text("player o won!");
+        board = new Board;
       };
 
     });
